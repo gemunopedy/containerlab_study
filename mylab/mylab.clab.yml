@@ -14,16 +14,8 @@ topology:
       kind: cisco_xrd
       image: ios-xrd/xrd-control-plane:latest
       startup-config: configs/R3.cfg
-    R4:
-      kind: vr-csr
-      image: ios-xrd/xrd-control-plane:latest
-      startup-config: configs/R4.cfg
-    R5:
-      kind: cisco_xrd
-      image: ios-xrd/xrd-control-plane:latest
-      startup-config: configs/R5.cfg
 
   links:
-    - endpoints: ["R1:Gi0/0/0/0", "R2:Gi0/0/0/0"]
-    - endpoints: ["R3:Gi0/0/0/0", "R1:Gi0/0/0/1"]
-    - endpoints: ["R3:Gi0/0/0/1", "R2:Gi0/0/0/1"]
+    - endpoints: ["R1:Gi0-0-0-0", "R2:Gi0-0-0-0"]
+    - endpoints: ["R1:Gi0-0-0-1", "R3:Gi0-0-0-0"]
+    - endpoints: ["R2:Gi0-0-0-1", "R3:Gi0-0-0-1"]
