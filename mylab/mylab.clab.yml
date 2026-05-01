@@ -3,16 +3,21 @@ name: mylab
 mgmt:
   network: mylab_mgmt
   ipv4-subnet: 172.30.0.0/24
+  ipv6-subnet: 2001:172:30:5::/80
 
 topology:
   nodes:
     R1:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:latest
+      mgmt-ipv4: 172.30.0.2
+      mgmt-ipv6: 2001:172:30:5::2
       startup-config: configs/R1.cfg
     R2:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:latest
+      mgmt-ipv4: 172.30.0.3
+      mgmt-ipv6: 2001:172:30:5::3
       startup-config: configs/R2.cfg
 
   links:
