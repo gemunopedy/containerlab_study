@@ -1,5 +1,9 @@
 name: mylab
 
+mgmt:
+  network: mylab_mgmt
+  ipv4-subnet: 172.30.0.0/24
+
 topology:
   nodes:
     R1:
@@ -10,12 +14,6 @@ topology:
       kind: cisco_xrd
       image: ios-xr/xrd-control-plane:latest
       startup-config: configs/R2.cfg
-    R3:
-      kind: cisco_xrd
-      image: ios-xr/xrd-control-plane:latest
-      startup-config: configs/R3.cfg
 
   links:
     - endpoints: ["R1:Gi0-0-0-0", "R2:Gi0-0-0-0"]
-    - endpoints: ["R1:Gi0-0-0-1", "R3:Gi0-0-0-0"]
-    - endpoints: ["R2:Gi0-0-0-1", "R3:Gi0-0-0-1"]
