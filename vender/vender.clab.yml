@@ -14,8 +14,8 @@ topology:
       mgmt-ipv6: 2001:172:30::2
       startup-config: configs/R1.cfg
     R2:
-      kind: vr-csr
-      image: cisco_csr1000v:latest
+      kind: cisco_c8000v
+      image: c8000v:latest
       mgmt-ipv4: 172.30.0.3
       mgmt-ipv6: 2001:172:30::3
       startup-config: configs/R2.cfg
