@@ -1,0 +1,69 @@
+name: junos-srv6
+
+mgmt:
+  network: junos-srv6_mgmt
+  ipv4-subnet: 172.50.0.0/24
+  ipv6-subnet: 2001:172:50::/80
+
+topology:
+  nodes:
+    R1:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.2
+      mgmt-ipv6: 2001:172:50::2
+      startup-config: configs/R1.cfg
+    R2:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.3
+      mgmt-ipv6: 2001:172:50::3
+      startup-config: configs/R2.cfg
+    R3:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.4
+      mgmt-ipv6: 2001:172:50::4
+      startup-config: configs/R3.cfg
+    R4:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.5
+      mgmt-ipv6: 2001:172:50::5
+      startup-config: configs/R4.cfg
+    R5:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.6
+      mgmt-ipv6: 2001:172:50::6
+      startup-config: configs/R5.cfg
+    R6:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.7
+      mgmt-ipv6: 2001:172:50::7
+      startup-config: configs/R6.cfg
+    R7:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.8
+      mgmt-ipv6: 2001:172:50::8
+      startup-config: configs/R7.cfg
+    R8:
+      kind: juniper_cjunosevolved
+      image: cjunosevolved:latest
+      mgmt-ipv4: 172.50.0.9
+      mgmt-ipv6: 2001:172:50::9
+      startup-config: configs/R8.cfg
+
+  links:
+    - endpoints: ["R1:eth4", "R2:eth4"]
+    - endpoints: ["R1:eth5", "R3:eth4"]
+    - endpoints: ["R2:eth5", "R4:eth4"]
+    - endpoints: ["R3:eth5", "R5:eth4"]
+    - endpoints: ["R2:eth6", "R3:eth6"]
+    - endpoints: ["R4:eth5", "R5:eth5"]
+    - endpoints: ["R4:eth6", "R6:eth4"]
+    - endpoints: ["R6:eth5", "R5:eth6"]
+    - endpoints: ["R1:eth6", "R8:eth4"]
+    - endpoints: ["R6:eth6", "R7:eth4"]
